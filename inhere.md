@@ -52,3 +52,7 @@ I'll speak korean, because of you make cannot understand, 이거 못알아보면
 
 참고) 맘같아선 최대 효율로 문자열 박고싶지만, 능지를 발달시킬 시간을 할애해서 고생히기에 귀차니즘이 도지기에
 배째!, 대충해.
+
+## Additional
+
+만약 이 문장을 번역해서 이해했다면, 기다려라, 내가 간다.
