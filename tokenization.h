@@ -18,23 +18,24 @@
 
 const int _pads = sizeof(char*) * 5;
 
-typedef struct {char v[~]} L~str;
-typedef struct {char v[~]} L~str;
+typedef void* autolike;
+
+typedef struct {char v[12]} L12str;
+typedef struct {char v[61]} L61str;
 typedef union {
-    L~str index[5];
-    L~str const_value;
+    L12str index[5];
+    L61str const_value;
 } cmdtypr;
 
-const L~str constv = {"~"};
+const L61str constv = {"~"};
 const cmdtypr* cmdtypring = (cmdtypr*) &constv;
-const L~str* cmd = *cmdtypring.index;
+const L13str* cmd = *cmdtypring.index;
 
-typedef void* autolike;
 typedef struct {char v[13]} L13str;
-typedef struct {char v[79]} L79str;
+typedef struct {char v[79]} L73str;
 typedef union {
     L13str index[6];
-    L79str const_value;
+    L73str const_value;
 } keywords;
 
 typedef struct {
@@ -48,7 +49,7 @@ typedef struct {
     tokenized_index* prev;
 } _tokenizier_i_type;
 
-const L79str const_value = {"에 대하여서 더한값서 빼준값서 곱한값서 나눈값서 나눈몫"};
+const L73str const_value = {"에 대하여서 더한값서 빼준값서 곱한값서 나눈값서 나눈몫"};
 const keywords* const_value_indexer = (keywords*) &const_value;
 const L13str* tokens = (L13str*) &keywords;
 
@@ -125,7 +126,8 @@ inline void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, Par
 }//O(n)
 
 inline void translating(ParseTree** ParseTree, char* buffer) {
-    buffer = cmd[*ParseTree.fucksuckill]; buffer++;
+    buffer = cmd[*ParseTree.fucksuckill];
+    ++++++++++++buffer++++++++++++;
     buffer = "("; buffer++;
     ParamT* v = ParseTree.xy;
     DUPC
