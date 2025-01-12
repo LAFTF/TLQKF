@@ -66,18 +66,41 @@ inline void tokenization(char* target, tokenized_index* ret) {
 } //O(n)
 
 typedef struct {
-    void* x;
-    bool is_char;
+    void* v;
+    bool is_txt;
 } paramT; //sucks!
 
 typedef struct {
-    char fuck;
     paramT xy[2];
+    char fucksuckill;
 } ParseTree;
 
-void working_parser(tokenized_index* tokenized_arr, ParseTree* tree, paramT* stack) {
-    paramT* stackBP = stack;
-    stack
+typedef union {
+    ParamT v;
+    ParseTree parseTreeV;
+} ParserStackType;
+
+typedef struct {ParserStackType arr[2];} L2ParserStackType;
+
+inline char f(tokenized_index* x) {return x -  6?flag_of(x):6;};
+
+void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, ParserStackType* stack, tokenized_index* ends) {
+    register L2ParserStackType* BP = (L2ParserStackType) *stack;
+    *stack.v = tokenized_arr;
+    for (char flag = 6; tokenized_arr - ends; flag = f(++tokenized_arr)) {
+        if (flag - 6) {
+            **tree.fucksuckill = flag;
+            --stack--;
+            **tree.v = (L2paramT) stack;
+            *++stack = tree.parseTreeV;
+            *++stack = null;
+            --stack--;
+            
+        } else {
+            *stack.v = tokenized_arr;
+        };
+        stack++;
+    };
 }
 
 //wow my code sucks!! ;) sans!!
