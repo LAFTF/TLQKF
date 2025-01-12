@@ -109,9 +109,10 @@ inline void umm(ParseTree** ParseTree, char* buffer) {
     //pass;
 }; //O(N)
 
-inline void compile_pre(char* target, char* buffer, tokenized_index* tokenizes_arr, ParseTree** tree, ParserStackType* stack, tokenized_index* ends) {
-    tokenization(target, tokenized_index);
-    working_parser(tokenized_index, tree, stack, ends);
+inline void translate_pre(char* target, char* buffer, tokenized_index** tokenizes_arr, ParseTree** tree, ParserStackType* stack) {
+    tokenized_index* ends = *tokenized_arr
+    tokenization(target, ends);
+    working_parser(*tokenized_index, tree, stack, ends);
     umm(ParseTree, buffer);
 };
 
