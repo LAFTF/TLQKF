@@ -84,24 +84,26 @@ typedef struct {ParserStackType arr[2];} L2ParserStackType;
 
 inline char f(tokenized_index* x) {return x -  6?flag_of(x):6;};
 
-void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, ParserStackType* stack, tokenized_index* ends) {
-    register L2ParserStackType* BP = (L2ParserStackType) *stack;
+inline void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, ParserStackType* stack, tokenized_index* ends) {
     *stack.v = tokenized_arr;
     for (char flag = 6; tokenized_arr - ends; flag = f(++tokenized_arr)) {
         if (flag - 6) {
             **tree.fucksuckill = flag;
-            --stack--;
-            **tree.v = (L2paramT) stack;
-            *++stack = tree.parseTreeV;
-            *++stack = null;
-            --stack--;
+            --stack;
+            **tree.xy = {stack, stack++};
+            *--stack = null;
+            *--stack = tree.parseTreeV;
+            stack.is_txt = false;
             *tree++;
         } else {
             *stack.v = tokenized_arr;
+            staxk.is_txt = true;
         };
         stack++;
     };
-}
+}//O(n)
+
+inline 
 
 //wow my code sucks!! ;) sans!!
 
