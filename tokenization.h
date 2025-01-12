@@ -95,7 +95,7 @@ void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, ParserStac
             *++stack = tree.parseTreeV;
             *++stack = null;
             --stack--;
-            
+            *tree++;
         } else {
             *stack.v = tokenized_arr;
         };
