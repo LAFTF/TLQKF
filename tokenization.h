@@ -3,6 +3,8 @@
 #ifndef _TOKENIZATION_H
 # define _TOKENIZATION_H
 
+#include <stdbool.h>
+
 #define ISIT_TOKEN(N) case tokens[N]: return N;
 #define SETIT *ret.ptr = target
 
@@ -86,7 +88,7 @@ inline char f(tokenized_index* x) {return x -  6?flag_of(x):6;};
 
 inline void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, ParserStackType* stack, tokenized_index* ends) {
     *stack.v = tokenized_arr;
-    for (char flag = 6; tokenized_arr - ends; flag = f(++tokenized_arr)) {
+    for (char flag = 6; tokenized_arr - ends; flag = f(++tokenized_arr++)) {
         if (flag - 6) {
             **tree.fucksuckill = flag;
             --stack;
@@ -103,7 +105,15 @@ inline void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, Par
     };
 }//O(n)
 
-inline 
+inline void umm(ParseTree** ParseTree, char* buffer) {
+    //pass;
+}; //O(N)
+
+inline void compile_pre(char* target, char* buffer, tokenized_index* tokenizes_arr, ParseTree** tree, ParserStackType* stack, tokenized_index* ends) {
+    tokenization(target, tokenized_index);
+    working_parser(tokenized_index, tree, stack, ends);
+    umm(ParseTree, buffer);
+};
 
 //wow my code sucks!! ;) sans!!
 
