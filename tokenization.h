@@ -7,8 +7,27 @@
 
 #define ISIT_TOKEN(N) case tokens[N]: return N;
 #define SETIT *ret.ptr = target
+#define REPEAT(N) for (autolike i = 0; i < N; i++)
+
+#define DUPC if (v.is_txt) {\
+        buffer = v.v.ptr;\
+        REPEAT(v.v.length) {buffer++};\
+    } else {\
+        translating(v.v, buffer);\
+    };
 
 const int _pads = sizeof(char*) * 5;
+
+typedef struct {char v[~]} L~str;
+typedef struct {char v[~]} L~str;
+typedef union {
+    L~str index[5];
+    L~str const_value;
+} cmdtypr;
+
+const L~str constv = {"~"};
+const cmdtypr* cmdtypring = (cmdtypr*) &constv;
+const L~str* cmd = *cmdtypring.index;
 
 typedef void* autolike;
 typedef struct {char v[13]} L13str;
@@ -105,11 +124,17 @@ inline void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, Par
     };
 }//O(n)
 
-inline void umm(ParseTree** ParseTree, char* buffer) {
-    //pass;
+inline void translating(ParseTree** ParseTree, char* buffer) {
+    buffer = cmd[*ParseTree.fucksuckill]; buffer++;
+    buffer = "("; buffer++;
+    ParamT* v = ParseTree.xy;
+    DUPC
+    buffer = ", "; ++buffer++; v++;
+    DUPC
+    buffer = ")"; buffer++;
 }; //O(N)
 
-inline void translate_pre(char* target, char* buffer, tokenized_index** tokenizes_arr, ParseTree** tree, ParserStackType* stack) {
+inline void translate(char* target, char* buffer, tokenized_index** tokenizes_arr, ParseTree** tree, ParserStackType* stack) {
     tokenized_index* ends = *tokenized_arr
     tokenization(target, ends);
     working_parser(*tokenized_index, tree, stack, ends);
