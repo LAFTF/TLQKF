@@ -49,7 +49,7 @@ inline _tokenizer_i_count(_tokenizer_i_type* i, char* x) {
     *i.current_length++;
 }
 
-void tokenization(char* target, tokenized_index* ret) {
+inline void tokenization(char* target, tokenized_index* ret) {
     SETIT;
     tokenized_index* prev = ret;
     ret++;
@@ -72,12 +72,12 @@ typedef struct {
 
 typedef struct {
     char fuck;
-    paramT x;
-    paramT y;
+    paramT xy[2];
 } ParseTree;
 
-void working_parser(tokenized_index* tokenized_arr, ParseTree* tree) {
-    //pass
+void working_parser(tokenized_index* tokenized_arr, ParseTree* tree, paramT* stack) {
+    paramT* stackBP = stack;
+    stack
 }
 
 //wow my code sucks!! ;) sans!!
