@@ -27,7 +27,7 @@ typedef union {
     L61str const_value;
 } cmdtypr;
 
-const L61str constv = {"~"};
+const L61str constv = {"num.oper.addnum.oper.sunnum.oper.motnum.oper.divnum.oper.mod"};
 const cmdtypr* cmdtypring = (cmdtypr*) &constv;
 const L13str* cmd = *cmdtypring.index;
 
