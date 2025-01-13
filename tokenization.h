@@ -232,7 +232,7 @@ inline void wrtc(char* fn, autolike L, char* src, char* buf) {
     WRT(0)
     wrtfn(buf, fn); wrtsrc(L, src);
     WRT(1)
-    WRT(
+    WRT(4)
 }
 
 //wow my code sucks!! ;) sans!!
