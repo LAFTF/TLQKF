@@ -20,22 +20,13 @@ const int _pads = sizeof(char*) * 5;
 
 typedef void* autolike;
 
-typedef struct {char v[12]} L12str;
-typedef struct {char v[61]} L61str;
-typedef union {
-    L12str index[5];
-    L61str const_value;
-} cmdtypr;
-
-const L61str constv = {"num.oper.addnum.oper.sunnum.oper.motnum.oper.divnum.oper.mod"};
-const cmdtypr* cmdtypring = (cmdtypr*) &constv;
-const L13str* cmd = *cmdtypring.index;
+const char symbols[5] = "+-*/";
 
 typedef struct {char v[13]} L13str;
-typedef struct {char v[79]} L73str;
+typedef struct {char v[66]} L66str;
 typedef union {
     L13str index[6];
-    L73str const_value;
+    L66str const_value;
 } keywords;
 
 typedef struct {
@@ -49,7 +40,7 @@ typedef struct {
     tokenized_index* prev;
 } _tokenizier_i_type;
 
-const L73str const_value = {"에 대하여서 더한값서 빼준값서 곱한값서 나눈값서 나눈몫"};
+const L66str const_value = {"에 대하여서 더한값서 빼준값서 곱한값서 나눈몫"};
 const keywords* const_value_indexer = (keywords*) &const_value;
 const L13str* tokens = (L13str*) &keywords;
 
@@ -60,8 +51,7 @@ inline char _flagof(L13str* v) {
         ISIT_TOKEN(2)
         ISIT_TOKEN(3)
         ISIT_TOKEN(4)
-        ISIT_TOKEN(5)
-        default: return 6;
+        default: return 5;
 }
 
 inline char flag_of(char* v) { return _flagof((L13str*) v); };
@@ -75,12 +65,12 @@ inline void tokenization(char* target, tokenized_index* ret) {
     SETIT;
     tokenized_index* prev = ret;
     ret++;
-    for (_tokenizier_i_type i = {6, 0, prev}; *target; _tokenizer_i_count(i, target)) {
-        if (i.flag != 6) {
+    for (_tokenizier_i_type i = {5, 0, prev}; *target; _tokenizer_i_count(i, target)) {
+        if (i.flag - 5) {
             *i.prev.length = i.length;
             SETIT;
             ret++; target += _pads;
-            *ret.length = 6;
+            *ret.length = 13;
             i.prev = ret;
             SETIT;
         };
@@ -104,12 +94,12 @@ typedef union {
 
 typedef struct {ParserStackType arr[2];} L2ParserStackType;
 
-inline char f(tokenized_index* x) {return x -  6?flag_of(x):6;};
+inline char f(tokenized_index* x) {return x -  5?flag_of(x):5;};
 
 inline void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, ParserStackType* stack, tokenized_index* ends) {
     *stack.v = tokenized_arr;
-    for (char flag = 6; tokenized_arr - ends; flag = f(++tokenized_arr++)) {
-        if (flag - 6) {
+    for (char flag = 5; tokenized_arr - ends; flag = f(++tokenized_arr++)) {
+        if (flag - 5) {
             **tree.fucksuckill = flag;
             --stack;
             **tree.xy = {stack, stack++};
@@ -125,14 +115,23 @@ inline void working_parser(tokenized_index* tokenized_arr, ParseTree** tree, Par
     };
 }//O(n)
 
-inline void translating(ParseTree** ParseTree, char* buffer) {
-    buffer = cmd[*ParseTree.fucksuckill];
-    ++++++++++++buffer++++++++++++;
+void translating(ParseTree**, char*);
+
+inline void translate_part(paramT argv, char* buf) {
+    if (argv.is_txt) {
+        buf = argv.v.ptr;
+        REPEAT(argv.v.length){buf++};
+    } else {
+        translating(argv.v, buf);
+    };
+}
+
+void translating(ParseTree** ParseTree, char* buffer) {
+    paramT* i = *ParseTree.xy;
     buffer = "("; buffer++;
-    ParamT* v = ParseTree.xy;
-    DUPC
-    buffer = ", "; ++buffer++; v++;
-    DUPC
+    translate_part(i[0], buffer)
+    buffer = cmd[*ParseTree.fucksuckill]; buffer++;
+    translate_part(i[1], buffer)
     buffer = ")"; buffer++;
 }; //O(N)
 
