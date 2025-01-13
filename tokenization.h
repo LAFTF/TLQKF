@@ -8,6 +8,9 @@
 #define ISIT_TOKEN(N) case tokens[N]: return N;
 #define SETIT *ret.ptr = target
 #define REPEAT(N) for (autolike i = 0; i < N; i++)
+#define __CLOSES__(N) N);
+#define WRTS(BUF) wrtevnt(BUF, __CLOSES__
+#define WRT WRTS(buf)
 
 #define DUPC if (v.is_txt) {\
         buffer = v.v.ptr;\
@@ -176,6 +179,60 @@ inline Lcharptr hfn(char* fn) {
     _hfnc(fn, bufs);
     _hfnc(fn, ret.strv);
     return ret;
+}
+
+typedef struct {
+    char L;
+    char** values;
+} csrct;
+
+inline char* _csrcti(csrct v, bool p, char i) { return v.values[v.L*p + i]; };
+
+const char csrctvc[33] = "\x01\x02\x04\x05\x06 \n#pragmaoncendifndefine"
+const char* csrctv[14] = {&csrctvc[0], &csrctvc[1], &csrctvc[4], &csrctvc[2], &csrctvc[3], &csrctvc[4], &csrctvc[4], &csrctvc[5], &csrctvc[6],
+&csrctvc[8], &csrctvc[14], &csrctvc[18], &csrctvc[23], &csrctvc[27]};
+char csrct csrcc = {5, &csrctv};
+
+/**
+ * 0. %20
+ * 1. \n#
+ * 2. pragma
+ * 3. once
+ * 4. endif
+ * 5. ifndef
+ * 6. define
+ **/
+inline void wrtevnt(char* buf, char idx) {
+    char* txt = _csrcti(csrcc, 1, idx);
+    REPEAT(*_csrcti(csrcc, 0, idx)) {
+        *buf = *txt;
+        buf++; txt++;
+    };
+}
+
+inline void wrtfn(char* buf, char* fn) {
+    for(;*fn;fn++){*buf = *fn; buf++;};
+}
+
+inline void wrtsrc(autolike L, char* src, char* buf) {
+    REPEAT(L) {*buf = *src; buf++; src++;};
+}
+
+inline void wrtc(char* fn, autolike L, char* src, char* buf) {
+    WRT(1)
+    WRT(2)
+    WRT(0)
+    WRT(3)
+    WRT(1)
+    WRT(5)
+    WRT(0)
+    wrtfn(buf, fn);
+    WRT(1)
+    WRT(6)
+    WRT(0)
+    wrtfn(buf, fn); wrtsrc(L, src);
+    WRT(1)
+    WRT(
 }
 
 //wow my code sucks!! ;) sans!!
