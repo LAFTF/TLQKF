@@ -142,6 +142,42 @@ inline void translate(char* target, char* buffer, tokenized_index** tokenizes_ar
     umm(ParseTree, buffer);
 };
 
+inline void _fnfix(char* fn, char* fixs) {
+    for (;*fn;fn++) {
+        *fixs = *fn=='.'?'_':*fn;
+        fixs++;
+    };
+}
+
+inline void _hfnc(char* fn, char* chfn) {
+    *chfn = '.';
+    for (;*fn;fn++) {
+        *chfn = *fn;
+        chfn++;
+    };
+}
+
+inline autolike len(char* str) {
+    autolike i = 0;
+    for (;*str;str++) {i++};
+    return i;
+}
+
+typedef struct {
+    autolike L;
+    char* strv;
+} Lcharptr;
+
+inline Lcharptr hfn(char* fn) {
+    Lcharptr ret;
+    ret.L = len(fn); ret.L++;
+    char[ret.L] rets, bufs;
+    ret.strv = rets;
+    _hfnc(fn, bufs);
+    _hfnc(fn, ret.strv);
+    return ret;
+}
+
 //wow my code sucks!! ;) sans!!
 
 #endif
